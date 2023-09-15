@@ -10,6 +10,7 @@
             double h = Convert.ToDouble(Console.ReadLine());
             double x = 0.0;
             double y = 0.0;
+            double z = 0.0;
             if (h > 3.5) // обработка первого условия первой системы
             {
                 x = h * Math.Cos(a + Math.Sqrt(a + h));
@@ -26,12 +27,18 @@
             {
                 y = Math.Pow(Math.E, a) + Math.Pow(x, 2) - h * x;
             }
-            double z = (a * Math.Pow(h, 3)) / (Math.Pow(x, 2) + Math.Abs(y) + 10); // находим значение z по формуле
+            if ((Math.Pow(x, 2) + Math.Abs(y) + 10) != 0)
+            {
+                z = (a * Math.Pow(h, 3)) / (Math.Pow(x, 2) + Math.Abs(y) + 10); // находим значение z по формуле
+            }
+            else {
+                Console.WriteLine("На 0 делить нельзя!");
+            }
             Console.WriteLine("a = " + a);
             Console.WriteLine("h = " + h);
             Console.WriteLine("x = " + x);
             Console.WriteLine("y = " + y);
-            Console.WriteLine("z = " + z); // 123
+            Console.WriteLine("z = " + z); 
         }
     }
 }
