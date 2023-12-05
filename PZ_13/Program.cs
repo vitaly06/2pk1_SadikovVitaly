@@ -58,7 +58,7 @@
             }
             else
             {
-                res = q * GetGeom(n2 - 1, d, q);
+                res = q * GetGeom(d, q, n2 - 1);
             }
             return res;
         }
