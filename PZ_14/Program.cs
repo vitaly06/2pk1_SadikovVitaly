@@ -7,7 +7,7 @@
             // Вариант 19
             try
             {
-                using (FileStream file = new FileStream(@"inFile.txt", FileMode.Truncate, FileAccess.ReadWrite))
+                using (FileStream file = new FileStream(@"inFile.txt", FileMode.Create, FileAccess.ReadWrite))
                 {
                     using (StreamWriter writer = new StreamWriter(file))
                     {
@@ -40,7 +40,6 @@
                     foreach (string line in lines)
                         Console.WriteLine(line);
                     Console.WriteLine($"Количество чисел в тексте: {count}");
-                    Console.ReadKey();
                 }
 
             }
