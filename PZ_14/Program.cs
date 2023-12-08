@@ -41,7 +41,6 @@
                         Console.WriteLine(line);
                     Console.WriteLine($"Количество чисел в тексте: {count}");
                 }
-
             }
         }
     }
