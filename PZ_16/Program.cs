@@ -2,7 +2,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Threading;
 
-namespace ConsoleApp1
+namespace PZ_16
 {
     internal class Program
     {
