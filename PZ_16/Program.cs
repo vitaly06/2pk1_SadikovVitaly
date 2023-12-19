@@ -1,7 +1,8 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.IO;
+using System.Threading;
 
-namespace PZ_16
+namespace ConsoleApp1
 {
     internal class Program
     {
@@ -20,13 +21,13 @@ namespace PZ_16
         static int steps = 0; // шаги
         // враги
         static int enemyHP = 30;
-        static int enemyPower = 5; 
+        static int enemyPower = 5;
         static int enemyCount = 0;
         // босс
         static int bossX = mapSize / 2;
         static int bossY = mapSize / 2;
-        static int bossHP = 75;
-        static int bossPower = 25;
+        static int bossHP = 60;
+        static int bossPower = 15;
         static bool isBoss = false;
 
 
@@ -46,7 +47,7 @@ namespace PZ_16
             for (int i = 0; i < mapSize; i++)
             {
                 for (int j = 0; j < mapSize; j++)
-                {                 
+                {
                     map[i, j] = '_';
                 }
             }
@@ -104,6 +105,7 @@ namespace PZ_16
             int playerOldX;
 
             while (true)
+
             {   // появление босса
                 if (enemyCount <= 0 && !isBoss)
                 {
@@ -113,7 +115,8 @@ namespace PZ_16
                     Console.WriteLine('K');
                     isBoss = true;
                     Console.ResetColor();
-                 
+                    //UpdateMap();
+
                 }
                 // проигрыш
                 if (personHP <= 0)
@@ -154,8 +157,8 @@ namespace PZ_16
                                             sw.Write('\n');
                                         }
                                         sw.WriteLine($"Здоровье игрока: {personHP} ");
-                                        sw.WriteLine($"Сила удара: {personPower}");
-                                        sw.WriteLine($"Пройдено шагов: {steps}");
+                                        sw.WriteLine($"Сила удара: {personPower} ");
+                                        sw.WriteLine($"Пройдено шагов: {steps} ");
                                     }
                                 }
                                 Environment.Exit(0);
@@ -207,7 +210,7 @@ namespace PZ_16
                         }
                         playerOldY--;
                         break;
-                        
+
                 }
                 Console.SetCursorPosition(playerY, playerX);
                 switch (map[playerX, playerY])
@@ -253,7 +256,6 @@ namespace PZ_16
                 enemyHP -= personPower;
                 personHP -= enemyPower;
                 Console.SetCursorPosition(playerY, playerX);
-
             }
             if (personHP <= 0)
             {
@@ -273,8 +275,15 @@ namespace PZ_16
         {
             while (personHP > 0 && bossHP > 0)
             {
+                Console.SetCursorPosition(27, 0);
+                Thread.Sleep(1000);
+                Console.WriteLine($"Здоровье босса: {bossHP} ");
                 bossHP -= personPower;
+                Thread.Sleep(1000);
+                Console.SetCursorPosition(27, 1);
+                Console.WriteLine($"Здоровье игрока: {personHP} ");
                 personHP -= bossPower;
+                Thread.Sleep(1000);
                 Console.SetCursorPosition(playerY, playerX);
 
             }
@@ -391,7 +400,7 @@ namespace PZ_16
             {
                 Console.WriteLine($"Возникла ошибка: {e}");
             }
-            
+
         }
         /// вывод карты на консоль
         static void UpdateMap()
@@ -400,7 +409,8 @@ namespace PZ_16
             for (int i = 0; i < mapSize; i++)
             {
                 for (int j = 0; j < mapSize; j++)
-                {   if (j == 25)
+                {
+                    if (j == 25)
                     {
                         continue;
                     }
