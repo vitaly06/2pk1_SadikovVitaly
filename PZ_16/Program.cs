@@ -59,8 +59,8 @@ namespace PZ_16
             //добавление врагов
             while (enemies > 0)
             {
-                x = random.Next(0, mapSize - 2);
-                y = random.Next(0, mapSize - 2);
+                x = random.Next(1, mapSize - 1);
+                y = random.Next(1, mapSize - 1);
 
                 //если ячейка пуста  - туда добавляется враг
                 if (map[x, y] == '_')
@@ -72,8 +72,8 @@ namespace PZ_16
             //добавление баффов
             while (buffs > 0)
             {
-                x = random.Next(0, mapSize - 2);
-                y = random.Next(0, mapSize - 2);
+                x = random.Next(1, mapSize - 1);
+                y = random.Next(1, mapSize - 1);
 
                 if (map[x, y] == '_')
                 {
@@ -84,8 +84,8 @@ namespace PZ_16
             //добавление аптечек
             while (health > 0)
             {
-                x = random.Next(1, mapSize - 2);
-                y = random.Next(1, mapSize - 2);
+                x = random.Next(1, mapSize - 1);
+                y = random.Next(1, mapSize - 1);
 
                 if (map[x, y] == '_')
                 {
